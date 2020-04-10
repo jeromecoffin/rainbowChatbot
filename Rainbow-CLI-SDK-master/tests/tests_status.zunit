@@ -1,0 +1,32 @@
+#!/usr/bin/env zunit
+
+@setup {
+  run rbw login $AFTERBUILD_LOGIN $AFTERBUILD_PASSWORD --host $AFTERBUILD_HOST
+}
+
+@test 'Command status api (#check portail Admin API)' {
+  run rbw status api --json
+  assert $state equals 0
+  NAME=`echo $output | jq '.[0].name' -r`
+  VERSION=`echo $output | jq '.[0].version' -r`
+  assert $NAME is_not_empty
+  assert $NAME same_as 'Rainbow Admin API'
+  assert $VERSION is_not_empty
+}
+
+@test 'Command status platform (#check status)' {
+  run rbw status platform --json
+  assert $state equals 0
+  NAME=`echo $output | jq '.[0].name' -r`
+  STATUS=`echo $output | jq '.[0].status' -r`
+  assert $NAME is_not_empty
+  assert $NAME same_as 'Platform status'
+  assert $STATUS is_not_empty
+  assert $STATUS same_as 'OK'
+}
+
+
+@teardown {
+  rbw logout
+}
+

@@ -1,0 +1,1 @@
+window.sdkcliversion="1.39.1";
