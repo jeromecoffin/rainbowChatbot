@@ -1,0 +1,2 @@
+ID app : 675ac1907b0711ea88b46f998ddae648
+app secret : "7PCkrHyo0SgPeKfOrq8tKBI8EDLTUFcjKWQ7skR4ckGxj7u3paYFMr1tqoGE0rpa"
